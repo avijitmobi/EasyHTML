@@ -152,16 +152,17 @@ public struct EasyHTML: View {
     }
     
     private var loadingView: some View {
-        VStack(spacing: 6) {
+        HStack(spacing: 6) {
             ProgressView()
                 .scaleEffect(0.8)
+                .frame(width: 20, height: 20)
             if isLoading {
                 Text("Loading...")
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }
         }
-        .frame(maxWidth: .infinity, minHeight: 40)
+        .frame(maxWidth: .infinity, minHeight: 30)
     }
     
     private func errorView(_ error: Error) -> some View {
