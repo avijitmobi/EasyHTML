@@ -12,7 +12,7 @@ A clean, reusable, and highly customizable HTML viewer for SwiftUI with **dynami
 ## ✨ Features
 
 - 📏 **Dynamic Height** – Automatically resizes to fit HTML content perfectly.
-- 🔤 **Smart Fonts** – Pass a custom font family, or pass \`nil\` to gracefully fallback to the system font.
+- 🔤 **Smart Fonts** – Pass a custom font family, or pass `nil` to gracefully fallback to the system font.
 - 🎨 **Complete Color Control** – Text, secondary text, background, and link colors.
 - 🧱 **Element-Level Styling** – Customize Links, Images, Headings, Lists, Code Blocks, Tables, Blockquotes, and Horizontal Rules.
 - 🌙 **Built-in Presets** – Dark mode, Sepia reader mode, and more out of the box.
@@ -26,14 +26,14 @@ A clean, reusable, and highly customizable HTML viewer for SwiftUI with **dynami
 ### Swift Package Manager
 
 1. In Xcode, go to **File > Add Package Dependencies...**
-2. Enter the repository URL: \`https://github.com/avijitmobi/EasyHTML\`
+2. Enter the repository URL: `https://github.com/avijitmobi/EasyHTML`
 3. Select your version and target, then click **Add Package**.
 
 ---
 
 ## 🚀 Quick Start
 
-\`\`\`swift
+```swift
 import SwiftUI
 import EasyHTML
 
@@ -52,15 +52,15 @@ struct ContentView: View {
         }
     }
 }
-\`\`\`
+```
 
 ---
 
 ## 📖 Detailed Feature Guide
 
-### 1. Content Sources (\`EasyHTMLContent.swift\`)
-You can initialize \`EasyHTML\` using three different input types:
-\`\`\`swift
+### 1. Content Sources (`EasyHTMLContent.swift`)
+You can initialize `EasyHTML` using three different input types:
+```swift
 // Raw HTML String
 EasyHTML(html: "<p>String</p>")
 
@@ -69,12 +69,12 @@ EasyHTML(url: URL(string: "https://example.com")!)
 
 // URL String
 EasyHTML(urlString: "https://example.com")
-\`\`\`
+```
 
-### 2. Font Configuration (\`FontConfiguration.swift\`)
-Controls the base typography. If you pass \`nil\` to the family name, it automatically uses the native iOS system font (\`-apple-system\`).
+### 2. Font Configuration (`FontConfiguration.swift`)
+Controls the base typography. If you pass `nil` to the family name, it automatically uses the native iOS system font (`-apple-system`).
 
-\`\`\`swift
+```swift
 EasyHTML(html: content)
     // Custom Font
     .font(family: "Georgia", size: 18, weight: "bold")
@@ -85,13 +85,13 @@ EasyHTML(html: content)
     // Using Presets
     .font(.serif)       // Georgia
     .font(.monospace)   // Menlo
-\`\`\`
-**Customizable Properties:** \`familyName\`, \`size\`, \`weight\`, \`style\`, \`letterSpacing\`, \`textTransform\`, \`textAlign\`.
+```
+**Customizable Properties:** `familyName`, `size`, `weight`, `style`, `letterSpacing`, `textTransform`, `textAlign`.
 
-### 3. Color Configuration (\`ColorConfiguration.swift\`)
+### 3. Color Configuration (`ColorConfiguration.swift`)
 Controls the color palette of the HTML body.
 
-\`\`\`swift
+```swift
 EasyHTML(html: content)
     // Apply Preset
     .colors(.dark)   // White text, black background
@@ -104,12 +104,12 @@ EasyHTML(html: content)
         background: "#F9F9F9",
         link: "#FF5733"
     ))
-\`\`\`
+```
 
-### 4. Spacing & Padding (\`SpacingConfiguration.swift\`)
+### 4. Spacing & Padding (`SpacingConfiguration.swift`)
 Controls layout breathing room, line height, and margins.
 
-\`\`\`swift
+```swift
 EasyHTML(html: content)
     // Line Height multiplier (e.g., 1.5 means 150% of font size)
     .lineHeight(1.8)
@@ -120,47 +120,47 @@ EasyHTML(html: content)
     // Using Presets
     .spacing(.compact)     // Tight UI
     .spacing(.standard)    // Default
-\`\`\`
+```
 
-### 5. Link Styling (\`LinkStyle.swift\`)
-Controls how \`<a>\` tags appear.
-\`\`\`swift
+### 5. Link Styling (`LinkStyle.swift`)
+Controls how `<a>` tags appear.
+```swift
 EasyHTML(html: "<a href='#'>Click me</a>")
     // Apply Preset
     .linkStyle(.underlined) // Always show underline
-\`\`\`
+```
 
-### 6. Image Styling (\`ImageStyle.swift\`)
-Controls how \`<img>\` tags are rendered.
-\`\`\`swift
+### 6. Image Styling (`ImageStyle.swift`)
+Controls how `<img>` tags are rendered.
+```swift
 EasyHTML(html: "<img src='...' />")
     // Apply Presets
     .imageStyle(.rounded)   // 8px border radius
     .imageStyle(.circular)  // Perfect circle
-\`\`\`
+```
 
-### 7. Heading Styling (\`HeadingStyle.swift\`)
-Controls \`h1\` through \`h6\` tags. You can customize their weight, text transform, and size multipliers relative to the base font.
-\`\`\`swift
+### 7. Heading Styling (`HeadingStyle.swift`)
+Controls `h1` through `h6` tags. You can customize their weight, text transform, and size multipliers relative to the base font.
+```swift
 EasyHTML(html: "<h1>Big Title</h1>")
     // Note: Heading styles are applied via the master configuration
     .configure(EasyHTMLConfiguration(
         headingStyle: HeadingStyle(weight: "bold", sizeMultipliers: [2.5, 2.0, 1.5, 1.2, 1.0, 0.8])
     ))
-\`\`\`
+```
 
-### 8. List Styling (\`ListStyle.swift\`)
-Controls \`<ul>\` and \`<ol>\` indentation and markers.
-\`\`\`swift
+### 8. List Styling (`ListStyle.swift`)
+Controls `<ul>` and `<ol>` indentation and markers.
+```swift
 EasyHTML(html: "<ul><li>Item 1</li></ul>")
     .configure(EasyHTMLConfiguration(
         listStyle: ListStyle(unorderedMarker: "square") // Changes bullet to square
     ))
-\`\`\`
+```
 
-### 9. Code Block Styling (\`CodeBlockStyle.swift\`)
-Differentiates between inline \`<code>\` and block \`<pre><code>\` elements. Uses safe structs for padding.
-\`\`\`swift
+### 9. Code Block Styling (`CodeBlockStyle.swift`)
+Differentiates between inline `<code>` and block `<pre><code>` elements. Uses safe structs for padding.
+```swift
 EasyHTML(html: "<code>inline</code> <pre><code>block</code></pre>")
     // Light code blocks instead of dark, custom padding
     .configure(EasyHTMLConfiguration(codeStyle: CodeBlockStyle(
@@ -168,11 +168,11 @@ EasyHTML(html: "<code>inline</code> <pre><code>block</code></pre>")
         blockTextColor: "#333333",
         inlinePadding: InlinePadding(horizontal: 6, vertical: 2)
     )))
-\`\`\`
+```
 
-### 10. Table Styling (\`TableStyle.swift\`)
+### 10. Table Styling (`TableStyle.swift`)
 Controls borders, headers, and alternating row colors. Uses safe structs for cell padding.
-\`\`\`swift
+```swift
 EasyHTML(html: "<table><tr><th>Header</th></tr></table>")
     // Modern rounded, striped table
     .configure(EasyHTMLConfiguration(tableStyle: TableStyle(
@@ -182,11 +182,11 @@ EasyHTML(html: "<table><tr><th>Header</th></tr></table>")
         borderRadius: 8,
         cellPadding: CellPadding(horizontal: 16, vertical: 10)
     )))
-\`\`\`
+```
 
-### 11. Blockquote Styling (\`BlockquoteStyle.swift\`)
+### 11. Blockquote Styling (`BlockquoteStyle.swift`)
 Controls the classic left-border accent or card-style blockquotes. Uses safe structs for padding.
-\`\`\`swift
+```swift
 EasyHTML(html: "<blockquote>Quote</blockquote>")
     // Change border color and width
     .configure(EasyHTMLConfiguration(
@@ -196,39 +196,39 @@ EasyHTML(html: "<blockquote>Quote</blockquote>")
             padding: BlockquotePadding(left: 20, vertical: 12, right: 0)
         )
     ))
-\`\`\`
+```
 
-### 12. Selection & Horizontal Rules (\`SelectionStyle.swift\` & \`HorizontalRuleStyle.swift\`)
-Control what happens when the user highlights text, and how \`<hr>\` tags look.
-\`\`\`swift
+### 12. Selection & Horizontal Rules (`SelectionStyle.swift` & `HorizontalRuleStyle.swift`)
+Control what happens when the user highlights text, and how `<hr>` tags look.
+```swift
 EasyHTML(html: "<hr>")
     .configure(EasyHTMLConfiguration(
         selectionStyle: SelectionStyle(backgroundColor: "#FFCC00"), // Yellow highlight
         ruleStyle: HorizontalRuleStyle(height: 3, color: "#CCCCCC")
     ))
-\`\`\`
+```
 
 ---
 
 ## ⚙️ Behavioral Features
 
 ### Dynamic Height (Automatic)
-By default, \`EasyHTML\` calculates its height automatically based on the HTML content using a lightweight JavaScript injection (\`HTMLWrapper.swift\`). You do not need to set a frame. Just drop it in a \`ScrollView\` or \`VStack\`.
+By default, `EasyHTML` calculates its height automatically based on the HTML content using a lightweight JavaScript injection (`HTMLWrapper.swift`). You do not need to set a frame. Just drop it in a `ScrollView` or `VStack`.
 
 ### Loading Indicator (Optional)
 By default, the loader is **hidden** to keep the UI clean. If you are loading heavy HTML or fetching from a URL, turn it on:
-\`\`\`swift
+```swift
 EasyHTML(html: content)
     .showLoader(true) // Shows a small ProgressView while loading
-\`\`\`
+```
 
 ### Scrollable Mode (For URLs)
 If you are loading a full website via URL, you likely want it contained in a fixed height with scrolling enabled:
-\`\`\`swift
+```swift
 EasyHTML(url: URL(string: "https://apple.com")!)
     .scrollable(true) // Enables internal scrolling
     .frame(height: 500) // You MUST provide a frame if scrollable is true
-\`\`\`
+```
 
 ---
 
@@ -236,7 +236,7 @@ EasyHTML(url: URL(string: "https://apple.com")!)
 
 This library is heavily modularized so you only import what Xcode compiles, and you can easily find the exact property you want to tweak.
 
-\`\`\`text
+```text
 EasyHTML/
 ├── Package.swift                          # SPM Setup
 └── Sources/
@@ -265,13 +265,13 @@ EasyHTML/
         └── Extensions/
             ├── String+Color.swift                 # Helper to convert Hex to SwiftUI Color
             └── View+EasyHTML.swift                # SwiftUI View extensions
-\`\`\`
+```
 
 ---
 
 ## 📄 License
 
-EasyHTML is released under the MIT License. See \`LICENSE\` for details.
+EasyHTML is released under the MIT License. See `LICENSE` for details.
 
 ---
 **Built with ❤️ by [Avijit Mondal](https://avijit.dev)**
